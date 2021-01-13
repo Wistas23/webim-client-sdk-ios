@@ -24,7 +24,16 @@ pod 'WebimClientLibrary', :git => 'https://github.com/webim/webim-client-sdk-ios
 
 Add following line to your **Cartfile**:
 ```
-github "webim/webim-client-sdk-ios" ~> 3.34.0
+github "webim/webim-client-sdk-ios" ~> 3.34.1
+```
+
+### Swift Package Manager
+Add following line to your **Package.swift**:
+```
+dependencies: [
+    // ...
+    .package(url: "https://github.com/Wistas23/webim-client-sdk-ios.git"),
+],
 ```
 
 ### Additional notes
