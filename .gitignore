@@ -25,3 +25,4 @@ Example/Pods/*
 .bundle
 
 Carthage
+.swiftpm

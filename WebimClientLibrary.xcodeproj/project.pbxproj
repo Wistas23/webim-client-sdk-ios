@@ -3,13 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		113057D6256E8088004BB13E /* StickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113057D5256E8088004BB13E /* StickerItem.swift */; };
 		113057A9256D209D004BB13E /* UploadedFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113057A8256D209D004BB13E /* UploadedFile.swift */; };
 		113057AC256D22DE004BB13E /* UploadedFileImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113057AB256D22DE004BB13E /* UploadedFileImpl.swift */; };
+		113057D6256E8088004BB13E /* StickerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113057D5256E8088004BB13E /* StickerItem.swift */; };
 		1134DD5A234A3FF5008FA6F0 /* NotFatalErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1134DD59234A3FF5008FA6F0 /* NotFatalErrorHandler.swift */; };
 		1134DD5C234A4BC8008FA6F0 /* WebimNotFatalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1134DD5B234A4BC8008FA6F0 /* WebimNotFatalError.swift */; };
 		1134DD5E234A69FF008FA6F0 /* WebimNotFatalErrorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1134DD5D234A69FF008FA6F0 /* WebimNotFatalErrorImpl.swift */; };
@@ -90,6 +90,7 @@
 		8FD244EA200CE25C007EB9CB /* WebimError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD244A5200CE25B007EB9CB /* WebimError.swift */; };
 		8FD244EB200CE25C007EB9CB /* MessageStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD244A6200CE25B007EB9CB /* MessageStream.swift */; };
 		8FD244EC200CE25C007EB9CB /* Webim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD244A7200CE25B007EB9CB /* Webim.swift */; };
+		9434302C25AF1C32002FB1B0 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 9434302B25AF1C32002FB1B0 /* SQLite */; };
 		CE2E681120123DB7004E99EA /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E681020123DB6004E99EA /* Array.swift */; };
 		CE2E681320123DC9004E99EA /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E681220123DC9004E99EA /* Collection.swift */; };
 		CE2E681520123DD0004E99EA /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2E681420123DD0004E99EA /* Int.swift */; };
@@ -118,9 +119,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		113057D5256E8088004BB13E /* StickerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerItem.swift; sourceTree = "<group>"; };
 		113057A8256D209D004BB13E /* UploadedFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadedFile.swift; sourceTree = "<group>"; };
 		113057AB256D22DE004BB13E /* UploadedFileImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadedFileImpl.swift; sourceTree = "<group>"; };
+		113057D5256E8088004BB13E /* StickerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerItem.swift; sourceTree = "<group>"; };
 		1134DD59234A3FF5008FA6F0 /* NotFatalErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotFatalErrorHandler.swift; sourceTree = "<group>"; };
 		1134DD5B234A4BC8008FA6F0 /* WebimNotFatalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebimNotFatalError.swift; sourceTree = "<group>"; };
 		1134DD5D234A69FF008FA6F0 /* WebimNotFatalErrorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebimNotFatalErrorImpl.swift; sourceTree = "<group>"; };
@@ -235,6 +236,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9434302C25AF1C32002FB1B0 /* SQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +467,9 @@
 			dependencies = (
 			);
 			name = WebimClientLibrary;
+			packageProductDependencies = (
+				9434302B25AF1C32002FB1B0 /* SQLite */,
+			);
 			productName = WebimClientLibrary;
 			productReference = 8FD2427A200CDB18007EB9CB /* WebimClientLibrary.framework */;
 			productType = "com.apple.product-type.framework";
@@ -494,6 +499,9 @@
 				en,
 			);
 			mainGroup = 8FD24270200CDB18007EB9CB;
+			packageReferences = (
+				9434302A25AF1C32002FB1B0 /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+			);
 			productRefGroup = 8FD2427B200CDB18007EB9CB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -737,7 +745,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -763,7 +772,11 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.webim.WebimClientLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -793,7 +806,11 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.webim.WebimClientLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -825,6 +842,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9434302A25AF1C32002FB1B0 /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.12.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9434302B25AF1C32002FB1B0 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9434302A25AF1C32002FB1B0 /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8FD24271200CDB18007EB9CB /* Project object */;
 }

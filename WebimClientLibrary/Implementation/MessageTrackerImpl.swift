@@ -24,7 +24,7 @@
 //  SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
 /**
  Class that is responsible for tracking changes of message stream.

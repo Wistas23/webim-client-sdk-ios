@@ -24,7 +24,7 @@
 //  SOFTWARE.
 //
 
-import Foundation
+import UIKit
 
 // MARK: - Constants
 fileprivate enum UserDefaultsName: String {

@@ -85,6 +85,7 @@ final class SQLiteHistoryStorage: HistoryStorage {
     private var readBeforeTimestamp: Int64
     private var prepared = false
     private var reachedHistoryEnd: Bool
+    private let SQLITE_CONSTRAINT: Int = 19
     
     
     // MARK: - Initialization
