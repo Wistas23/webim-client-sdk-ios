@@ -187,6 +187,7 @@ final class WebimSessionImpl {
         
         var historyStorage: HistoryStorage
         var historyMetaInformationStoragePreferences: HistoryMetaInformationStorage
+        let fileUrlCreator = FileUrlCreator(webimClient: webimClient, serverURL: serverURLString)
         if isLocalHistoryStoragingEnabled {
             if userDefaults?[UserDefaultsMainPrefix.historyDBname.rawValue] as? String == nil {
                 let dbName = "webim_\(ClientSideID.generateClientSideID()).db"
@@ -212,7 +213,7 @@ final class WebimSessionImpl {
             }
             let sqlhistoryStorage = SQLiteHistoryStorage(dbName: dbName,
                                                   serverURL: serverURLString,
-                                                  webimClient: webimClient,
+                                                  fileUrlCreator: fileUrlCreator,
                                                   reachedHistoryEnd: historyMetaInformationStoragePreferences.isHistoryEnded(),
                                                   queue: queue,
                                                   readBeforeTimestamp: readBeforeTimestamp ?? Int64(-1))
@@ -300,8 +301,8 @@ final class WebimSessionImpl {
         }
         
         // Needed for message attachment secure download link generation.
-        currentChatMessageMapper.set(webimClient: webimClient)
-        historyMessageMapper.set(webimClient: webimClient)
+        currentChatMessageMapper.set(fileUrlCreator: fileUrlCreator)
+        historyMessageMapper.set(fileUrlCreator: fileUrlCreator)
         
         return WebimSessionImpl(accessChecker: accessChecker,
                                 sessionDestroyer: sessionDestroyer,
@@ -930,12 +931,17 @@ final private class DestroyOnFatalErrorListener: InternalErrorListener {
         }
     }
     
-    func onNotFaral(error: NotFatalErrorType) {
+    func onNotFatal(error: NotFatalErrorType) {
         if !sessionDestroyer.isDestroyed() {
             notFatalErrorHandler?.on(error: WebimNotFatalErrorImpl(errorType: error))
         }
     }
     
+    func connectionStateChanged(connected: Bool) {
+        if !sessionDestroyer.isDestroyed() {
+            notFatalErrorHandler?.connectionStateChanged(connected: connected)
+        }
+    }
 }
 
 // MARK: -
@@ -946,9 +952,12 @@ final private class DestroyOnFatalErrorListener: InternalErrorListener {
  2017 Webim
  */
 final private class ErrorHandlerToInternalAdapter: InternalErrorListener {
-    func onNotFaral(error: NotFatalErrorType) {
+    
+    func onNotFatal(error: NotFatalErrorType) {
     }
     
+    func connectionStateChanged(connected: Bool) {
+    }
     
     // MARK: - Parameters
     private weak var fatalErrorHandler: FatalErrorHandler?
