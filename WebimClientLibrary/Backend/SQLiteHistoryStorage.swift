@@ -112,11 +112,11 @@ final class SQLiteHistoryStorage: HistoryStorage {
     
     func getMajorVersion() -> Int {
         // No need in this implementation.
-        return 7
+        return 8
     }
     
     func getVersionDB() -> Int {
-        return 7
+        return 8
     }
     
     func set(reachedHistoryEnd: Bool) {
@@ -676,7 +676,7 @@ final class SQLiteHistoryStorage: HistoryStorage {
         var quote: Quote?
         if let quoteValue = row[SQLiteHistoryStorage.quote],
             let data = NSKeyedUnarchiver.unarchiveObject(with: Data.fromDatatypeValue(quoteValue)) as? [String : Any?] {
-                quote = QuoteImpl.getQuote(quoteItem: QuoteItem(jsonDictionary: data), messageAttachment: nil)
+                quote = QuoteImpl.getQuote(quoteItem: QuoteItem(jsonDictionary: data), messageAttachment: nil, fileUrlCreator: fileUrlCreator)
         }
         
         return MessageImpl(serverURLString: serverURLString,
